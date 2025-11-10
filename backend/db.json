@@ -11,7 +11,14 @@
       "views": 200
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "id": "ef53",
+      "text": "d",
+      "picture": "d",
+      "textarea": "d"
+    }
+  ],
   "profile": {
     "name": "typicode"
   }

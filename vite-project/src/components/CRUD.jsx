@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { FaTimes, FaRegTrashAlt } from 'react-icons/fa'
 import { GrEdit } from "react-icons/gr";
 import axios from 'axios'
+import toast from 'react-hot-toast';
 
 export default function CRUD() {
   const [comment, setComment] = useState([])
@@ -28,6 +29,7 @@ export default function CRUD() {
         await axios.put(`http://localhost:3000/comments/${editid}`, { text, picture, textarea })
       } else {
         await axios.post('http://localhost:3000/comments', { text, picture, textarea })
+        toast.success('Add New Comments');
       }
 
       setText('')
@@ -43,12 +45,14 @@ export default function CRUD() {
 
   const EditData = async (id) => {
     try {
+        
       const res = await axios.get(`http://localhost:3000/comments/${id}`)
       setText(res.data.text)
       setPicture(res.data.picture  )
       setTextarea(res.data.textarea  )
       setEditid(id)
       setModal(true)
+      
     } catch (e) {
       console.log(e)
     }
@@ -58,6 +62,16 @@ export default function CRUD() {
     try {
       await axios.delete(`http://localhost:3000/comments/${id}`)
       GetData()
+      toast('',
+  {
+    icon: '👏',
+    style: {
+      borderRadius: '10px',
+      background: '#333',
+      color: '#fff',
+    },
+  }
+);
     } catch (e) {
       console.log(e)
     }
@@ -91,7 +105,7 @@ export default function CRUD() {
               <img
                 src={post.picture}
                 alt="comment img"
-                className="h-40 object-cover rounded-2xl border-2 border-purple-200 shadow-md"
+                className="h-40 w-40 object-cover rounded-2xl border-2 border-purple-200 shadow-md"
               />
             )}
 
