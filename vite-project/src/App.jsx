@@ -5,7 +5,10 @@ export default function App() {
   return (
     <div>
       <CRUD/>
-        <Toaster />
+  <Toaster
+  position="top-right"
+  reverseOrder={false}
+/>
     </div>
   )
 }

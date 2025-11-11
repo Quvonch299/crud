@@ -64,10 +64,12 @@ export default function CRUD() {
       GetData()
       toast('',
   {
-    icon: '👏',
+    icon: '👏 Good Job',
     style: {
-      borderRadius: '10px',
+      borderRadius: '20px',
       background: '#333',
+      width:'200px',
+      height:'70px',
       color: '#fff',
     },
   }
